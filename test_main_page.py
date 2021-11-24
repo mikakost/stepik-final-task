@@ -1,5 +1,6 @@
 import time
 from pages.main_page import MainPage
+from pages.login_page import LoginPage
 
 
 def test_guest_can_go_to_login_page(browser):
@@ -8,4 +9,6 @@ def test_guest_can_go_to_login_page(browser):
     page.open()  # открываем страницу
     page.go_to_login_page()  # выполняем метод страницы — переходим на страницу логина
     page.should_be_login_link()  # проверяем наличии ссылки для перехода на страницу логина
+    page = LoginPage(browser, link, 10)
+    page.should_be_login_page()
     #time.sleep(5)
