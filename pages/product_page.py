@@ -30,3 +30,12 @@ class ProductPage(BasePage):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         # Проверяем, что цена товара присутствует в сообщении со стоимостью корзины
         assert product_price == message_basket_total, "No product price in the message"
+
+    def should_not_see_success_message_after_adding_to_cart(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADDING_SUCCESS), "Element is visible for an user"
+
+    def should_not_see_success_message_upon_opening_product_page(self):
+        assert self.is_not_element_present(*ProductPageLocators.ADDING_SUCCESS), "Element is visible for an user"
+
+    def should_disappeared_success_message(self):
+        assert self.is_disappeared(*ProductPageLocators.ADDING_SUCCESS), "Message has not disappeared"
