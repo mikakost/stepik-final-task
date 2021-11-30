@@ -4,6 +4,7 @@ from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from .locators import BasePageLocators
+from .locators import BasketPageLocators
 import math
 
 
@@ -11,7 +12,7 @@ class BasePage:
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        # self.browser.implicitly_wait(timeout)
+        self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
@@ -58,3 +59,13 @@ class BasePage:
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def go_to_basket(self):
+        view_basket = self.browser.find_element(*BasePageLocators.VIEW_BASKET)
+        view_basket.click()
+
+    def is_basket_empty_message_appear(self):
+        assert self.browser.find_element(*BasketPageLocators.EMPTY_BASKET), "Basket is empty message not appear"
+
+    def should_be_empty_basket(self):
+        assert not self.is_element_present(*BasketPageLocators.FULL_BASKET), "Basket is empty"
