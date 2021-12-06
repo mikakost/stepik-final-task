@@ -1,17 +1,24 @@
 from selenium.webdriver.common.by import By
 
+
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-    LOGIN_LINK_INVALID = (By.ID, "login_link_inv")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
     VIEW_BASKET = (By.CSS_SELECTOR, ".basket-mini a.btn")
+
 
 class BasketPageLocators:
     EMPTY_BASKET = (By.ID, "content_inner")
-    FULL_BASKET = (By.CSS_SELECTOR, ".form-group clearfix a.btn")
+    NOT_EMPTY_BASKET = (By.CLASS_NAME, "basket-items")
+
 
 class LoginPageLocators:
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
-    REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
+    REGISTRATION_BUTTON = (By.NAME, "registration_submit")
+    REGISTRATION_EMAIL = (By.ID, "id_registration-email")
+    REGISTRATION_FORM = (By.CSS_SELECTOR, "#register_form")
+    REGISTRATION_PASSWORD = (By.ID, "id_registration-password1")
+    REGISTRATION_PASSWORD_CONFIRM = (By.ID, "id_registration-password2")
 
 
 class ProductPageLocators:
